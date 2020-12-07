@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudante View</title>
+    <!-- Bootstrap -->
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+   
+</head>
+<body>
+<div class="container">
+
+    <h1 th:text="'Estudantes / Contador: ' + ${#lists.size(estudante)}" ></h1>
+	<a target="_blank" th:href="@{|/download-pdf|}"> <i class="fas fa-file-pdf"></i> <span>Download PDF</span></a>
+	<a target="_blank" th:href="@{|/download-pdf-manual|}"> <i class="fas fa-file-pdf"></i> <span>Download Manual</span></a>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Universidade</th>
+                <th>Nacionalidade</th>
+                <th>Aniversário</th>
+                <th>Ativo</th>
+            </tr>
+            <tr th:each="estudante : ${estudante}">
+                <td th:text="${estudante.id}"></td>
+                <td th:text="${estudante.nome}"></td>
+                <td th:text="${estudante.sobreNome}"></td>
+                <td th:text="${estudante.universidade}"></td>
+                <td th:text="${estudante.nacionalidade}"></td>
+                <td th:text="${#temporals.format(estudante.aniversario, 'dd/MM/yyyy')}"></td>
+                <td th:text="${estudante.ativo}"></td>
+            </tr>
+        </table>
+    </div>
+   
+    <a th:href="@{|/download-pdf|}"> <i class="fas fa-file-pdf"></i> <span>Download PDF</span></a>
+</div>
+
+</body>
+</html>

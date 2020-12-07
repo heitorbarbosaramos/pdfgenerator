@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Estudantes</title>
+    
+    <style type="text/css">
+		
+		th{
+			padding-top: 12px;
+  			padding-bottom: 12px;
+  			text-align: left;
+  			background-color: #000000;
+  			color: #ffffff;
+		}
+		table, td, th {
+			border: 1px solid black;
+			font-family: Arial, Helvetica, sans-serif;
+ 			padding: 5px;
+		}
+				
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			
+		}
+    
+    </style>
+   
+</head>
+
+<body>
+
+<i class="fas fa-file-pdf"></i> 
+<span class="titles-style" th:text="|Estudantes: / Contador do thymeleaf: ${#lists.size(estudantes)}|"></span>
+
+<div th:each ="quantidade : ${quantidade}" th:text="${quantidade}"></div>
+
+<!-- Students Table -->
+<div id="students">
+    <div th:if="${not #lists.isEmpty(estudantes)}">
+        <table>
+            <thead>
+            <tr>
+                <th background="0000ff">Id</th>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Nacionalidade</th>
+                <th>Universidade</th>
+                <th>Ativo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="estudande : ${estudantes}">
+                <td th:text="${estudande?.id}"></td>
+                <td th:text="${estudande?.nome}"></td>
+                <td th:text="${estudande?.sobreNome}"></td>
+                <td th:text="${estudande?.nacionalidade}"></td>
+                <td th:text="${estudande?.universidade}"></td>
+                <td th:text="${estudande?.ativo}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
